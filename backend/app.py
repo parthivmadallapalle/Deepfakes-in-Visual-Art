@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template, send_file
+from flask import Flask, request, jsonify, send_file
 from tensorflow.keras.models import load_model
 from PIL import Image
 import numpy as np
@@ -30,7 +30,10 @@ def preprocess(image):
 
 @app.get("/")
 def home():
-    return render_template("index.html")
+    return jsonify({
+        "status": "online",
+        "service": "AI Art Detector Backend"
+    })
 
 @app.post("/api/predict")
 def predict():
