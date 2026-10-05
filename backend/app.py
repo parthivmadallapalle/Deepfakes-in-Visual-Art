@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify, send_file
+from flask_cors import CORS
 from tensorflow.keras.models import load_model
 from PIL import Image
 import numpy as np
@@ -11,6 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent
 MODEL_PATH = BASE_DIR / "model" / "ai_art_detector.keras"
 
 app = Flask(__name__)
+CORS(app)
 app.config["MAX_CONTENT_LENGTH"] = 15 * 1024 * 1024
 
 model = None
