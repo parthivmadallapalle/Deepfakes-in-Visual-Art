@@ -36,7 +36,7 @@ export async function analyzeImage(
 
   onProgress?.('Preprocessing');
 
-  const response = await fetch('/api/predict', {
+ const response = await fetch(`${import.meta.env.VITE_API_URL}/api/predict`, {
     method: 'POST',
     body: formData,
   });
